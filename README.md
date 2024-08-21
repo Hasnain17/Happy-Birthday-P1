@@ -1,4 +1,4 @@
-Here's a README file you can use for your GitHub project:
+Here's the full README file content with the `MainActivity` section rewritten to match the style of the `GreetingImage` section:
 
 ```markdown
 # Happy Birthday App
@@ -21,26 +21,30 @@ Here's a preview of the app's main screen:
 
 The main components of the app are:
 
-- `MainActivity.kt`: The main entry point of the app, which sets up the content and theme.
-- `GreetingImage`: A composable function that displays a background image and overlays the greeting text.
-- `GreetingText`: A composable function that displays the birthday message and signature.
-
 ### MainActivity
 
 ```kotlin
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
+        // Enables edge-to-edge content display
         enableEdgeToEdge()
+        
+        // Sets the content view using Jetpack Compose
         setContent {
             HappyBirthdayTheme {
+                
+                // Defines the surface for the UI
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    modifier = Modifier.fillMaxSize(), // Fills the entire screen
+                    color = MaterialTheme.colorScheme.background // Applies the background color from the theme
                 ) {
+                    
+                    // Calls the GreetingImage composable with the message and signature
                     GreetingImage(
-                        message = stringResource(R.string.happy_birthday_text),
-                        from = stringResource(R.string.signature_text)
+                        message = stringResource(R.string.happy_birthday_text), // Fetches the birthday message string
+                        from = stringResource(R.string.signature_text) // Fetches the signature string
                     )
                 }
             }
@@ -55,19 +59,24 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) {
     val image = painterResource(id = R.drawable.androidparty)
+    
     Box(modifier) {
+        
+        // Displays the background image with a semi-transparent overlay
         Image(
             painter = image,
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            alpha = 0.5F
+            contentDescription = null, // No description needed as the image is decorative
+            contentScale = ContentScale.Crop, // Crops the image to fill the space
+            alpha = 0.5F // Sets the image transparency
         )
+        
+        // Overlays the greeting text on top of the image
         GreetingText(
             message = message,
             from = from,
             modifier = Modifier
-                .fillMaxSize()
-                .padding(8.dp)
+                .fillMaxSize() // Fills the available space
+                .padding(8.dp) // Adds padding around the text
         )
     }
 }
@@ -78,22 +87,28 @@ fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) 
 ```kotlin
 @Composable
 fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
+    
+    // Arranges the text elements in a vertical column
     Column(
-        verticalArrangement = Arrangement.Center,
+        verticalArrangement = Arrangement.Center, // Centers the text vertically
         modifier = modifier
     ) {
+        
+        // Displays the main birthday message
         Text(
             text = message,
-            fontSize = 100.sp,
-            lineHeight = 116.sp,
-            textAlign = TextAlign.Center
+            fontSize = 100.sp, // Sets the font size
+            lineHeight = 116.sp, // Sets the line height
+            textAlign = TextAlign.Center // Centers the text horizontally
         )
+        
+        // Displays the signature below the main message
         Text(
             text = from,
-            fontSize = 36.sp,
+            fontSize = 36.sp, // Sets the font size for the signature
             modifier = Modifier
-                .padding(16.dp)
-                .align(alignment = Alignment.CenterHorizontally)
+                .padding(16.dp) // Adds padding around the signature
+                .align(alignment = Alignment.CenterHorizontally) // Centers the signature horizontally
         )
     }
 }
@@ -123,4 +138,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Material Design 3](https://m3.material.io/) for providing a modern and adaptive UI framework.
 ```
 
-This README file gives an overview of your project, the code structure, and instructions on how to get started. You can customize it further if needed!
+This README file is formatted consistently, with detailed comments explaining the key parts of the code. It provides an overview of the project, its features, and instructions for getting started.
