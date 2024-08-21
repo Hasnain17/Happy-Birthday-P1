@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-```
+
 
 ### GreetingImage
 
